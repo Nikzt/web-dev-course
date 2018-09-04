@@ -1,0 +1,27 @@
+body {
+	font-family: "M PLUS 1p";
+	text-align: center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+td:nth-of-type(3) {
+	border-right: 0px solid black;
+}
+
+td {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	width: 100px;
+	height: 100px;
+	padding: 0;
+	margin: 0;
+}
+
+tr:nth-of-type(3) td {
+	border-bottom: 0px solid black;
+}

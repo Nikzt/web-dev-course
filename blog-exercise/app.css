@@ -1,0 +1,51 @@
+p {
+	font-family: "M PLUS 1p";
+}
+
+body {
+	font-size: 16px;
+	font-family: "M PLUS 1p";
+	font-weight: 500;
+	width: 67%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	border: 10px solid #e0e0e0;
+	padding: 20px;
+}
+
+h1 {
+	font-size: 1.7em;
+	font-weight: 800;
+}
+
+h2 {
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #717171;
+	letter-spacing: 3px;
+}
+
+.quote {
+	border-left: 6px solid #a0c0e0;
+	padding-left: 6px;
+	color: #595959;
+}
+
+.article {
+	padding-bottom: 0px;
+	margin-bottom: 20px;
+}
+
+#lastArticle {
+	margin-bottom: 0px;
+	margin-top: 20px;
+	padding-bottome: 0px;
+	border-bottom: 0px solid #e0e0e0;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}

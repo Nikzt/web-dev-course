@@ -1,0 +1,14 @@
+h1 {
+	color: purple;
+}
+
+body {
+	background: url(https://media.freestocktextures.com/cache/7e/df/7edfd8262b0df8403e5abacac62d680d.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+li {
+	color: red;
+	background: #ef9011
+}	
