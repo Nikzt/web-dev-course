@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="photos.css">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>Bence Linder / Projects</title>
+</head>
+<body>
+
+<div class="container" id="nameContainer"> 
+	<div class="row">
+		<div class="col-lg-12">
+			<span class="homeTitle">Bence Linder / 
+			<span class="dropdown align-baseline">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Projects
+			  </button>
+			  <div class="dropdown-menu" id="main-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="menu-item dropdown-item" href="games.html">Games</a>
+			    <a class="menu-item dropdown-item" href="art.html">Art</a>
+			  </div>
+			</span></span>
+			<hr id="nameLine"></hr>
+		</div>
+	</div>
+</div>
+
+<div class="container" id="post">
+	<div class="row">
+		<div class="col-lg-12">
+<h1 id="post-title">Genetic Algorithms in Game Testing</h1>
+
+<p> One of the reasons that balancing a game is so difficult is that it requires a lot of game testing and user feedback to identify problems, which can be expensive and time consuming. Actually fixing the problems in a game's mechanics requires in depth knowledge of the game, which can be biased as the developer has a different perspective of it than the end user. 
+</p>
+
+<p>What we propose to help deal with these difficulties is fairly simple conceptually; let AI agents play the game, with natural selection determining their behaviour traits. Eventually, local optimum AI parameters will emerge, which is already useful in itself, but going through this process also provides valuable data that can be used to analyze the AI, game mechanics, and levels.</p>
+
+<h2>The Testing Environment</h2>
+
+<p>The ideal canditate for our testing environment would be a simple deathmatch game with AI player implementation, all with accessible source code. Deathmatch works well for a genetic algorithm since the environment is perfectly suited for natural selection, and having access to the source code is required to implement the algorithm as the AI has to be modified. Luckily, we found just what we were looking for in the <a href="https://assetstore.unity.com/packages/templates/systems/deathmatch-ai-kit-45894" target="_blank">Deathmatch AI Kit<a> from the Unity Asset Store.</p>
+
+<img src="photo-grid-files/deathmatch-ai-kit.png">
+
+<p>The Deathmatch AI Kit by Opsive features a single map, a behaviour tree visual scripting tool, and a simple implementation of a third-person deathmatch shooter with AI opponents. While not as good as having an established game to work with, it would do for a proof-of-concept.</p>
+
+<img id="deathmatchMap" src="photo-grid-files/deathmatch-map.png">
+
+<h2>Setup</h2>
+
+<p>The next step was to implement the genetic algorithm. First, we looked for parameters in the behaviour tree of the AI that could be adjusted, as well as implementing some new parameters:</p>
+
+<ul>
+<li><strong>Cover Probability:</strong> Probability that the agent camps in cover for some amount of time when passing by a cover point</li>
+<li><strong>Flee HP Threshold:</strong> If the agent's health is below this threshold, they will flee from the attacker</li>
+<li><strong>Flee Distance:</strong> If the attacker is beyond this distance threshold, the agent will flee</li>
+<li><strong>Find HP Threshold:</strong> If the agent's health is below this threshold and they are not being attacked, they will search for a health pack</li>
+<li><strong>Attack Range:</strong> The distance the agent will try to keep from its target while attacking</li>
+<li><strong>Patrol Type:</strong> If the agent is not in combat or looking for health, they will use one of these policies to patrol the map
+	<ul>
+	  <li><strong>Random:</strong> Randomly patrol the map</li>
+	  <li><strong>Directional:</strong> Patrol the map in a pre-determined path</li>
+	  <li><strong>Long Camp:</strong> Stay on the platforms overlooking the central area of the map</li>
+	  <li><strong>Short Camp:</strong> Wait for enemies by the health packs in the outer parts of the map</li>
+	</ul>
+</li>
+<li><strong>Weapon:</strong> This determines which weapon the agent will start with. They will only use this weapon.</li>
+	<ul>
+	  <li><strong>Shotgun</strong></li>
+	  <li><strong>SMG</strong></li>
+	  <li><strong>Assault Rifle</strong></li>
+	  <li><strong>Sniper Rifle</strong></li>
+	</ul>
+</ul>
+
+<img src="photo-grid-files/SoloTreeExpanded.png">
+
+<p>All of these parameters need to be encoded into "chromosomes", so that when an agent is given this chromosome, their parameters will be set in accordance. Each parameter is represented by a 3-bit number, which is expressed differently depending on the parameter. For example, health threshold values are in the range 0 - 100, and weapons are mapped explicitly to certain bit values.</p>
+
+
+<p>Together, all of the parameters make up a 27-bit chromosome.</p>
+
+<img src="photo-grid-files/chromosome-parameters.png">
+
+<p>Once we had chromosomes, it was time to implement selection and crossover to complete the algorithm. More specifically, we used a version of the CHC genetic algorithm which worked better for smaller populations.</p>
+
+<ol>
+<li><strong>Initialize Population:</strong> 32 chromosomes are generated randomly, which serves as the initial population</li>
+<li><strong>Evaluation:</strong> 4 games of deathmatch are played, each with 8 agents receiving a chromosome to determine their parameters. At the end of each game, the agents' scores are linked to their chromosomes.</li>
+<li><strong>Crossover:</strong> Chromosomes are paired randomly to produce 2 offspring for each pair. The new chromosomes are created by exchanging half of the non-matching bits of their parents.</li>
+<li><strong>Evaluation:</strong> The new child population is evaluated.</li>
+<li><strong>Selection:</strong> The child population and the parent population are sorted by score, and the bottom half of chromosomes are eliminated. This now becomes the new parent population.</li>
+</ol>
+
+<p>Steps 4 and 5 are then repeated until the population converges (ie. there is little variation in the population), at which point the algorithm restarts with the initial population being generated by flipping 35% of the bits of the highest scoring chromosome.</p>
+
+<h2>Results</h2>
+
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
