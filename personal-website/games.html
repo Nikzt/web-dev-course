@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="app.css">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<title>Bence Linder / Games</title>
+</head>
+<body>
+
+<div class="container" id="nameContainer"> 
+	<div class="row">
+		<div class="col-lg-12">
+			<span class="homeTitle">Bence Linder / 
+			<span class="dropdown align-baseline">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Games
+			  </button>
+			  <div class="dropdown-menu" id="main-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="menu-item dropdown-item" href="projects.html">Projects</a>
+			    <a class="menu-item dropdown-item" href="art.html">Art</a>
+			  </div>
+			</span></span>
+			<hr id="nameLine"></hr>
+		</div>
+	</div>
+</div>
+
+<div class="container" id="post">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 id="post-title">Kitchen Brawl</h1>
+			
+			<p id="intro">This game was created in the Video Game Design course with the Unity game engine during my final year at the University of Toronto. The course was a collaboration between U of T and OCAD where everyone was divided into teams and expected to deliver a complete game within 4 months in time for the <a href="">Level Up Showcase</a> to present our games. Each team contained up to 3 artists from OCAD and 3 programmers from U of T, and although we were short one artist, Kitchen Brawl made it to the showcase as a complete game enjoyed by many people wandering through the event.</p>
+
+			<img id="kitchenBrawlLogo" src="kitchen-brawl-files/kb-poster.png">
+
+			<h2>Gameplay</h2>
+
+			<p>Kitchen Brawl is a head-to-head cooking game where players cook to get points for their team, or do whatever they can to interfere with the other team's ability to cook. The interfering can be anything from taking the good ingredients first, to mercilessly beating down the opponents in order to prevent them from cooking anything at all. Players do not have to resort to such violence, but for some reason they always do...</p>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/gn2r55qJLNU?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<h2>Development Process</h2>
+
+			<p>On the first day of class, we were told about the process by which the teams would be chosen: every person must individually submit 3 ideas for a game, and out of those ideas, the best 12 would be selected by the professors and the TA. If an idea wins, then the person who submitted it becomes the leader of that group. Everyone else in the class would then pick which group they want to join, with the group leaders getting to make the final decision of who gets to be on their team.</p>
+
+			<p>I happened to be one of the lucky few who had an idea good enough to be turned into a game, and here is the 2 sentence submission that started it all:</p>
+
+			<p class="blockQuote">A local multi-player cooking competition game where the players can do almost anything (fight, steal ingredients, etc) to sabotage their opponent as long as the judge isn't looking. If caught by the judge, that player is eliminated.</p>
+
+			<p>Shortly after the game ideas/group leaders were announced, the time had come for everyone else to select groups, and within a few minutes we were already working on our games by implementing a proof-of-concept within 5 hours in the form of a playable demo. In this way, the earliest form of Kitchen Brawl was 2 low-poly vegetables trying to push each other into a pot.</p> 
+
+			<img src="kitchen-brawl-files/kb-game-jam.png">
+
+			<p>After this point, the development process followed a typical routine:</p>
+
+			<ul>
+							<li>Present current progress of Kitchen Brawl in game testing sessions or in-class demos</li>
+							<li>Discuss feedback and plan for next demo</li>
+							<li>Implement new features in time for next demo</li>
+			</ul>
+
+			<p>Since Kitchen Brawl is relatively small in terms of required assets (we didn't have to create huge levels for a single player experience, just a single stage) we really got to focus on polishing the core mechanics. Most of our discussions revolved around the UI and how we would communicate to the player with visual cues so that they know how to play without explanation or a tutorial.</p>
+
+			<p>By the time we got to the Level Up showcase, we were confident that the game was ready for the public.</p>
+
+			<h2>My Role</h2>
+
+			<p>As the project leader of Kitchen Brawl, I was involved with almost every aspect of the development. Our workflow had me in the position where I was responsible for making sure everyone's contributions fit together nicely into a cohesive piece of software, so this included integrating the art assets, refactoring code, and of course writing plenty of original code as well. Officially, I had the final say in what made it into the game, but overall our communication was good enough that I never had to pull that card.</p>
+
+			<p>To get more specific on what I worked on, here's a list of areas where I contributed the most:</p>
+			<ul>
+							<li>Character controls</li>
+							<li>Combat (throwing and hitting)</li>
+							<li>Character animations</li>
+							<li>Integrating 3D and 2D art assets</li>
+							<li>Cooking table and ingredient interactions</li>
+			</ul>
+
+			<h2>Showcases</h2>
+
+			<p>Because AMD was sponsoring the Level Up Showcase, they let us use one of their beefed up gaming PCs to run Kitchen Brawl in glorious ultra graphical settings. It seemed they liked our game game, since this resulted in our team being invited to another showcase at the AMD building in Toronto, as well as getting us a spot to show Kitchen Brawl at the Science Rendezvous.</p>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/wj4aiAcOUIE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<p>While at the AMD event, I was informed that there would be another event sponsored by AMD for which they wanted the Level Up winners to attend, and that was the CNE Gaming Garage. Here, we got a taste of the part of the game development cycle where we sit at a booth and promote our game for 10 hours a day, but the more exciting part of the event was that I got to speak on a panel about my experiences as a student game developer (I'm the one in the white shirt).</p>
+
+			<img src="kitchen-brawl-files/cne-panel.jpg">
+
+			<h2>Plans for the future</h2>
+
+			<p>At the moment, development on Kitchen Brawl is on hold. Most of the team members (including myself) are too busy to put the same amount of effort in as we did during our class, although I have been ever so slowly refactoring the code in hopes that it can get to a state that's polished enough to put up on Steam.</p>
+
+			<p>If anything ever comes of Kitchen Brawl, you would hear about it on our Twitter first.</p>
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
