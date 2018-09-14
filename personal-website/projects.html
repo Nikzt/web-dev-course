@@ -37,8 +37,8 @@
 <div class="container" id="post">
 	<div class="row">
 		<div class="col-lg-12">
-		<h1 id="post-title">Genetic Algorithms in Game Testing</h1>
-		
+		<h1 class="btn btn-primary" id="post-title" data-toggle="collapse" href="#collapseGA" role="button" aria-expanded="false" aria-controls="collapseGA">Genetic Algorithms in Game Testing</h1>
+		<div class="collapse" id="collapseGA">	
 		<p id="intro">This was done by myself under the supervision of Steve Engels as my final computer science project at the University of Toronto</p>
 		
 		<hr id="nameLine"></hr>
@@ -164,10 +164,37 @@
 		
 		<p>The results are as expected, which shows that this method of tuning AI agents can serve as a simulated player population that responds to changes in game mechanics, providing useful data to be considered in the game testing process.</p>
 		
+		</div>
+		<div class="postBreak"></div>
 
+			<h1 class="btn btn-primary" id="post-title" data-toggle="collapse" href="#collapsePTTabs" role="button" aria-expanded="false" aria-controls="collapsePTTabs">Polybar Terminal Tabs</h1>
+			<div class="collapse" id="collapsePTTabs">	
+				<p id="intro">I put this project up on my GitHub after one of my GNU/Linux desktop environment customization sessions got a little out of hand, and I realized I had created something that other people may actually want to look at.</p>
+				
+				<hr id="nameLine"></hr>
+
+				<h2>What is it?</h2>
+
+				<p>I like to keep my desktop environment as minimal as possible, which is why I use a tiling window manager (specifically bspwm). Instead of clicking through menus and icons, then dragging windows around, I prefer to have my frequently used programs bound to keyboard shortcuts, and everything else is done through the command line or terminal applications. I noticed that there were a few terminal applications I opened up almost every time I used my computer, so I decided to bind those to keyboard shortcuts as well. However, there was a problem with this.</p>
+
+				<p>There only ever needed to be one instance of these applications open at a time, and having to remember which workspace I put my calendar in was a bit too much trouble for me. So, I tied these terminal windows to the status bar in a tab system and all my problems were solved.</p>
+
+				<div id="pttabsGif" style='position:relative; padding-bottom:70.80%'><iframe src='https://gfycat.com/ifr/EvilWellgroomedAmbushbug' frameborder='0' scrolling='no' width='100%' height="79.5%" style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+
+				<p>In the GIF above, you'll notice a bar on the bottom. This is Polybar, a minimal but highly customizable status bar for GNU/Linux, which was created by jaagr. The other key to making this system work is tdrop, which can hide/show terminal windows and will follow to different workspaces.</p>
+
+				<h2>How it works</h2>
+
+				<p>Polybar has some commands that allows the user to interact with it through IPC. This allows the icons in the bar to serve as buttons, so the command that my script sends basically tells an icon to change color hide/show the associated terminal window.</p>
+
+				<p>Most of the work comes from keeping track of terminal windows. This is where tdrop comes in, which allowed me to assign an ID to each terminal window, and all I had to do after that was write a script that reads and writes to a file that keeps track of which windows are opened. Once this was done, it was a simple task of determining which command to send to Polybar based on which windows were open and which button was pressed.</p>
+
+				<p>To see the scripts, take a look at the <a href="https://github.com/Nikzt/polybar-terminal-tabs" target="_blank">GitHub repository.</a></p>
+			</div>
 		</div>
 	</div>
 </div>
+
 
 </body>
 </html>

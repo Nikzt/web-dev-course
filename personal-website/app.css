@@ -4,16 +4,32 @@ img {
 }
 
 #post-title {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
 	color: #d8dee9;
 	padding: 14px;
+	border-radius: 0;
+	background-color: #4c566a !important;
+	white-space: normal;
 	border: 4px solid #d8dee9;
 	line-height: 1.7em;
-	margin-bottom: 28px;
+	margin-bottom: 0px;
 	text-transform: uppercase;
 	font-weight: 800 ;
 	font-size: 1.8em ;
 	text-align: center;
 	letter-spacing: 3px;
+}
+
+.postBreak {
+	margin-top: 28px;
+}
+
+#post-title:hover {
+	background-color: #d8dee9 !important;
+	color: #4c566a;
+	border: 4px solid #4c566a;
 }
 
 #logoGroup {
@@ -26,6 +42,11 @@ iframe {
 	margin-right: auto;
 	margin-bottom: 30px;
 	margin-top: 30px;
+}
+
+#pttabsGif {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 #kitchenBrawlLogo {
