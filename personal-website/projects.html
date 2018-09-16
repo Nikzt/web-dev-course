@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="app.css">
+	<script src="functions.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -37,7 +38,7 @@
 <div class="container" id="post">
 	<div class="row">
 		<div class="col-lg-12">
-		<h1 class="btn btn-primary" id="post-title" data-toggle="collapse" href="#collapseGA" role="button" aria-expanded="false" aria-controls="collapseGA">Genetic Algorithms in Game Testing</h1>
+		<div class="btn btn-primary post-title" onclick="switchCollapse(this.id)" id="gaTitle" data-toggle="collapse" href="#collapseGA" role="button" aria-expanded="false" aria-controls="collapseGA"><div class="expandIndicator align-middle">+</div>Genetic Algorithms in Game Testing</div>
 		<div class="collapse" id="collapseGA">	
 		<p id="intro">This was done by myself under the supervision of Steve Engels as my final computer science project at the University of Toronto</p>
 		
@@ -167,7 +168,7 @@
 		</div>
 		<div class="postBreak"></div>
 
-			<h1 class="btn btn-primary" id="post-title" data-toggle="collapse" href="#collapsePTTabs" role="button" aria-expanded="false" aria-controls="collapsePTTabs">Polybar Terminal Tabs</h1>
+			<h1 class="btn btn-primary post-title" id="pttabsTitle" onclick="switchCollapse(this.id)" data-toggle="collapse" href="#collapsePTTabs" role="button" aria-expanded="false" aria-controls="collapsePTTabs"><span class="expandIndicator">+</span>Polybar Terminal Tabs</h1>
 			<div class="collapse" id="collapsePTTabs">	
 				<p id="intro">I put this project up on my GitHub after one of my GNU/Linux desktop environment customization sessions got a little out of hand, and I realized I had created something that other people may actually want to look at.</p>
 				
@@ -191,8 +192,51 @@
 
 				<p>To see the scripts, take a look at the <a href="https://github.com/Nikzt/polybar-terminal-tabs" target="_blank">GitHub repository.</a></p>
 			</div>
+			<div class="postBreak"></div>
+			<h1 class="btn btn-primary post-title" id="flowsTitle" onclick="switchCollapse(this.id)" data-toggle="collapse" href="#collapseFlows" role="button" aria-expanded="false" aria-controls="collapseFlows"><span class="expandIndicator">+</span>Slice of Life</h1>
+			<div class="collapse" id="collapseFlows">	
+				<p id="intro">In the summer of 2017, I worked on a research project at the Kingston General Hospital, which had me creating a data analysis tool specifically for analyzing the flow of patients coming in and out of the emergency room at the hospital.</p>
+				
+				<hr id="nameLine"></hr>
+
+				<h2>The Project</h2>
+				
+				<p>The main idea behind the project was to model patient flow through the emergency department using concepts from traffic engineering. By collecting some metrics at each segment of time throughout the day, we can calculate these traffic flow parameters:</p>
+
+				<ul>
+					<li><strong>Flow:</strong> The number of patients traversing the care segment per unit time.</li>
+					<li><strong>Density:</strong> The number of patients present in the care segment at a given time.</li>
+					<li><strong>Travel Time:</strong> Length of stay or wait time in a given care segment.</li>
+				</ul>
+
+				<p>Since a patient will pass through multiple care segments, their entire journey through the emergency department will contribute to these metrics, resulting in a model from which useful statistics can be extracted.</p>	
+					
+				<h2>The Program</h2>
+
+				<p>Given 3 years worth of raw patient data, my task was to write a program that does the following:</p>
+				<div class="blockQuote">Input: 
+							<ul>
+											<li>CSV file of patient records</li>
+											<li>Care segments of interest</li>
+											<li>Time slice length</li>
+											<li>Filter criteria</li>
+							</ul>
+				</div>
+				<div class="blockQuote">Output: 
+							<ul>
+											<li>CSV file where each row contains the traffic flow statistics for a time slice, and only the patients that were in the selected care segment during this time are included in these calculations.</li>
+											<li>Various plots generated from these statistics</li>
+							</ul>
+				</div>
+
+				<p>I wrote this program in Python, using the tkinter module as a GUI, and the pandas python data analysis library to extract statistics that would be put into the plots. The reason the program included a GUI was because it was used by another person working on the project who was a data analyst but not a programmer, and because of this I had to consider how to make the program understandable and usable by someone like this. In addition, the part of the program that generated plots was perfect for creating the report and poster since it allows the user to view it in the window and then decide whether or not to save it.</p>
+
+				<p>For more details, take a look on <a href="#">GitHub</a>.</p>
+
+			</div>
 		</div>
 	</div>
+
 </div>
 
 
