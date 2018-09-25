@@ -231,7 +231,41 @@
 
 				<p>I wrote this program in Python, using the tkinter module as a GUI, and the pandas python data analysis library to extract statistics that would be put into the plots. The reason the program included a GUI was because it was used by another person working on the project who was a data analyst but not a programmer, and because of this I had to consider how to make the program understandable and usable by someone like this. In addition, the part of the program that generated plots was perfect for creating the report and poster since it allows the user to view it in the window and then decide whether or not to save it.</p>
 
-				<p>For more details, take a look on <a href="#">GitHub</a>.</p>
+				<h2>Example Usage</h2>
+
+				<p>The user will first select the CSV file to read from. It is important to note that the CSV file must have all datetimes in numerical format.</p>	
+
+				<img src="slice-of-life-files/ss1.png">
+
+				<p>In this tab, the length of the time slices is set (delta_t), as well as the date range to draw patient visit entries from.</p>
+
+				<img src="slice-of-life-files/ss2.png">
+
+				<p>Since the data files have a large number of columns that may or may not be needed, it is up to the user at this point to select which columns are of interest, as well as labeling them as columns which represent a time entry in the patient's visit or something else (visit characteristic).
+
+				<img src="slice-of-life-files/ss3.png">
+
+				<p>A "curfew" is used as a way to handle errors or missing entries which cause a patient to be recorded as spending an unreasonable amount of time in a certain segment. Setting a curfew on a segment will automatically move patients onto the next segment if they exceed the set limit.</p>
+
+				<img src="slice-of-life-files/ss4.png">
+
+				<p>Once the fields have been filled out, the user needs to click "Read Data" in order to move onto the next step, where the specifications for the output files are defined.</p>
+
+				<p>At this point, the segments of interest can be defined. For example, if we want to know about the flow and density of patients from arrival to discharge, we select these columns and click "Add Segment".</p>
+
+				<img src="slice-of-life-files/ss5.png">
+
+				<p>Another feature here is that filters can be added, using the visit characterstic columns. For example, we could only include patients who are seen by a general surgeon.</p>
+
+				<img src="slice-of-life-files/ss6.png">
+
+				<p>Clicking "Generate Report" will output a CSV file that looks like this for each segment defined. The TSLICE_START column indicates the start of a time segment, and the rest of each row contains the statistics for that time slice. The time slice start times are in the excel datetime format, which means each number represents the amount of days since January 1st, 1900.</p>
+
+				<img src="slice-of-life-files/ss7.png">
+
+				<p>Running the other Python script included with Slice of Life allows us to read in the CSV files we just generated, and generate some plots and other statistics associated with flow and time of day.</p>
+
+				<img src="slice-of-life-files/fluxDensityperhour.gif">
 
 			</div>
 		</div>
